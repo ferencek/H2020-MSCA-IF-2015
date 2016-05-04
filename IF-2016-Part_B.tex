@@ -1,0 +1,135 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{eurosym}
+\usepackage{lastpage}
+\usepackage{xspace}
+\usepackage[margin=15mm,includehead,includefoot]{geometry}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage[usenames,dvipsnames,table]{xcolor}
+\usepackage{csquotes}
+\usepackage{pgfgantt}
+\usepackage[compact]{titlesec}
+\usepackage{enumitem}
+\usepackage[style=verbose-ibid,backend=bibtex]{biblatex}
+\usepackage{hyperref}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage{soul} % for smarter (word-wrapping) underlining.
+\usepackage{lineno}
+\usepackage{enumitem} % for broken enumerate in ethics section.
+
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\TODO}[1]{{\textcolor{red}{[\textbf{TODO:} #1]}}}
+\newcommand{\acronym}{{\sc Proposal Acronym}\xspace}
+% \titlespacing\section{0pt}{6pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+% \titlespacing\subsection{0pt}{6pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+% \titlespacing\subsubsection{0pt}{6pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+\titleformat*{\section}{\large\bfseries}
+\titleformat*{\subsection}{\normalsize\bfseries}
+\titleformat*{\subsubsection}{\normalsize\bfseries}
+\let\oldfootnotesize\footnotesize
+\renewcommand{\footnotesize}{\fontsize{8bp}{1em}\selectfont}
+\renewcommand{\cite}{\autocite} % citations in footnotes
+\bibliography{bibliography}
+
+\headheight=14pt
+
+% Explicitly set footnote font size to match call (i.e., 8pt).
+% Taken from http://tex.stackexchange.com/a/249422/84485
+\makeatletter
+\renewcommand\footnotesize{%
+   \@setfontsize\footnotesize\@ixpt{8}%
+   \abovedisplayskip 8\p@ \@plus2\p@ \@minus4\p@
+   \abovedisplayshortskip \z@ \@plus\p@
+   \belowdisplayshortskip 4\p@ \@plus2\p@ \@minus2\p@
+   \def\@listi{\leftmargin\leftmargini
+               \topsep 4\p@ \@plus2\p@ \@minus2\p@
+               \parsep 2\p@ \@plus\p@ \@minus\p@
+               \itemsep \parsep}%
+   \belowdisplayskip \abovedisplayskip
+}
+\makeatother
+
+\hypersetup{
+    pdftitle={H2020-MSCA-IF-2016},    % title
+    pdfauthor={},
+    colorlinks=true,
+    citecolor=black,
+    linkcolor=black,
+    urlcolor=blue
+  }
+
+\newcommand{\markStartPageLimit}{%
+\begin{flushright}
+\textcolor{red}{{\large {\bf START PAGE COUNT \--- MAX 10 PAGES~~~~~}}\\
+\rule{\textwidth}{0.5mm}
+}\vspace{-.5cm}
+\end{flushright}
+}
+\newcommand{\markEndPageLimit}{%
+\vfill
+\begin{flushright}
+\textcolor{red}{{\large {\bf STOP PAGE COUNT \--- MAX 10 PAGES~~~~~}}\\
+\rule{\textwidth}{0.5mm}
+}
+\end{flushright}
+}
+
+
+% To correctly align fancy headers.
+% Courtesy of: http://tex.stackexchange.com/a/88136/84485
+\makeatletter
+\newcommand{\resetHeadWidth}{\fancy@setoffs}
+\makeatother
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[C]{\color{gray}{\acronym\xspace - Standard EF / CAR / RI / GF\\
+(Delete as appropriate and include as header on each page)}}
+\fancyfoot{}
+\fancyfoot[C]{\color{gray}{Part B - Page \thepage~of \pageref*{sec:endpage}}}
+\resetHeadWidth
+
+\renewcommand{\headrulewidth}{0pt}
+
+
+\renewcommand{\contentsname}{\centerline{TABLE OF CONTENTS}}
+% The code below converts all section headings to upper case in the table of contents.
+% Courtesy of: http://tex.stackexchange.com/a/156917/84485
+\makeatletter
+\let\oldcontentsline\contentsline
+\def\contentsline#1#2{%
+  \expandafter\ifx\csname l@#1\endcsname\l@section
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
+  {%
+    \oldcontentsline{#1}{\MakeUppercase{#2}}%
+  }{%
+    \oldcontentsline{#1}{#2}%
+  }%
+}
+\makeatother
+
+
+
+\begin{document}
+%\begin{linenumbers}
+
+\include{doc1}
+\include{doc2}
+
+%\end{linenumbers}
+\end{document}
+
+
