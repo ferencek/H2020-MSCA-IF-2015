@@ -16,6 +16,7 @@
 \usepackage{csquotes}
 \usepackage{pgfgantt}
 \usepackage[nohyperlinks,nolist]{acronym}
+\usepackage[stable]{footmisc}
 
 \usepackage[compact]{titlesec}
 % HotFix from http://tex.stackexchange.com/a/300259/84485
@@ -27,14 +28,14 @@
 \patchcmd{\ttlh@hang}{\noindent}{}{}{}
 \makeatother
 
-\usepackage{enumitem}
-\usepackage[style=verbose-ibid,backend=bibtex]{biblatex}
+\usepackage[style=verbose-inote,backend=bibtex]{biblatex}
 \usepackage{hyperref}
 \usepackage{amsfonts,amsmath,amssymb}
-\usepackage{soul} % for smarter (word-wrapping) underlining.
+\usepackage{soul} % for smarter (word-wrapping) underlining
 \setul{1pt}{.4pt} % 1pt below contents
 \usepackage{lineno}
-\usepackage{enumitem} % for broken enumerate in ethics section.
+\usepackage{enumitem}
+\usepackage{pifont}
 
 \usepackage{helvet}
 \renewcommand{\familydefault}{\sfdefault}
@@ -71,7 +72,7 @@
 \makeatother
 
 \hypersetup{
-    pdftitle={H2020-MSCA-IF-2017},    % title
+    pdftitle={H2020-MSCA-IF-2018},    % title
     pdfauthor={},
     colorlinks=true,
     citecolor=black,
@@ -107,30 +108,18 @@
 \fancyhead[C]{\color{gray}{\ac{PropAcronym}\xspace\xspace - EF-ST / EF-CAR / EF-RI / EF-SE / GF\\
 (Delete as appropriate and include as header on each page)}}
 \fancyfoot{}
-\fancyfoot[C]{\color{gray}{Part B - Page \thepage~of \pageref*{sec:endpage}}}
+\fancyfoot[C]{\color{gray}{Part B - Page \thepage~of \pageref*{sec:letters}}}
 \resetHeadWidth
 
 \renewcommand{\headrulewidth}{0pt}
 
 
-\renewcommand{\contentsname}{\centerline{TABLE OF CONTENTS}}
-% The code below converts all section headings to upper case in the table of contents.
-% Courtesy of: http://tex.stackexchange.com/a/156917/84485
-\makeatletter
-\let\oldcontentsline\contentsline
-\def\contentsline#1#2{%
-  \expandafter\ifx\csname l@#1\endcsname\l@section
-    \expandafter\@firstoftwo
-  \else
-    \expandafter\@secondoftwo
-  \fi
-  {%
-    \oldcontentsline{#1}{\MakeUppercase{#2}}%
-  }{%
-    \oldcontentsline{#1}{#2}%
-  }%
-}
-\makeatother
+% For CV
+\definecolor{lightgray}{gray}{0.8}
+\newcolumntype{L}{>{\raggedleft}p{0.14\textwidth}}
+\newcolumntype{R}{p{0.8\textwidth}}
+\newcommand\VRule{\color{lightgray}\vrule width 0.5pt}
+
 
 %List of acronyms used in the proposal 
 %read the acronym package manual for details: http://ctan.mackichan.com/macros/latex/contrib/acronym/acronym.pdf
